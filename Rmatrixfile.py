@@ -1,9 +1,3 @@
-import numpy as np
-import math
-import matplotlib.pyplot as plt
-from mpl_toolkits.mplot3d import Axes3D
-
-pi=math.pi
 # Here we have a function that creates our initial R and V matrices for dens and T
 def init_matrix(dens,T):
     rows=6
