@@ -13,7 +13,6 @@ R,V=init_matrix(dens,T) # Here we plot our R matrix as a scatter plot
 fig = plt.figure()
 ax = fig.add_subplot(111, projection='3d')
 ax.scatter(R[:,0], R[:,1], R[:,2], c='b', marker='o')
-
 ax.set_xlabel('X')
 ax.set_ylabel('Y')
 ax.set_zlabel('Z')
