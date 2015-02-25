@@ -20,7 +20,7 @@ def init_matrix(dens,T):
     vs=T*0.5
     V=np.random.normal(0,vs,(n,3))
     print (R)
-    return R,V
+    return R,V,L,n
 #    raw_input()
 
 #R,V=init_matrix(0.8,1) # Here we plot our R matrix as a scatter plot    
