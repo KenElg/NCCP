@@ -2,7 +2,7 @@ program Force
 
 implicit none
 
-integer,parameter :: n=2
+integer,parameter :: n=100
 integer:: i,j
 real :: R(n,3), dr(3), rho, f(3*n,n), dU(n,n), TF(3*n), FM(n)
 
