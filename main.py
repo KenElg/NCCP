@@ -20,6 +20,9 @@ ax.set_zlabel('Z')
 plt.show()
 
 # next is the force function
+# import Force # shared object Force.so f2py module
+
+
 
 # next is the movement
 
