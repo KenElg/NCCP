@@ -6,10 +6,11 @@ from mpl_toolkits.mplot3d import Axes3D
 pi=math.pi
 
 dens=0.8
-T=2
+T=1
 
 from Rmatrixfile import init_matrix
-R,V=init_matrix(dens,T) # Here we plot our R matrix as a scatter plot    
+R,V,L,n=init_matrix(dens,T) # Here we make our initial matrices
+#Here we plot the initial R matrix     
 fig = plt.figure()
 ax = fig.add_subplot(111, projection='3d')
 ax.scatter(R[:,0], R[:,1], R[:,2], c='b', marker='o')
@@ -19,6 +20,9 @@ ax.set_zlabel('Z')
 plt.show()
 
 # next is the force function
+# import Force # shared object Force.so f2py module
+
+
 
 # next is the movement
 
