@@ -2,9 +2,9 @@ program Force
 
 implicit none
 
-integer,parameter :: n=2
+integer,parameter :: n=2, L = 1
 integer:: i,j
-real :: R(n,3), dr(3), rho, f(3*n,n), dU(n,n), TF(3*n), FM(n)
+real :: R(n,3), dr(3), rho, f(3*n,n), dU(n,n), TF(3*n), FM(n), rho_c
 
 
 
@@ -29,12 +29,19 @@ do i=1,n
 	if (i < j) then
                 
          dr(:) = R(i,:) - R(j,:)   !dx,dy,dz are elements of difference vector r_ij       
-         
                 
          rho = dot_product(dr,dr)**0.5   ! length of r_ij
-                
+         
+         rho = rho - L * nint(rho/L)
+         
+         if (rho > rho_c) then       
+         
+         cycle
+              
+         end if 
+         
          dU(i,j) = (12*rho**(-13) - 6*rho**(-7)) * rho**(-1) ! grad U
-                
+               
          f(i,j) = dU(i,j) * dr(1)
          f((n+i),j) = dU(i,j) * dr(2)
          f((2*n+i),j) = dU(i,j) * dr(3) 
@@ -46,14 +53,6 @@ do i=1,n
          f(j,(n+i)) = -f((n+i),j)
          f(j,(2*n+i)) = -f((2*n+i),j) 
          
-         
-	 !fx(j,i)=-fx(i,j)
-	 !fy(j,i)=-fy(i,j)
-	 !fz(j,i)=-fz(i,j)
-
-	 !dx(j,i)=dx(i,j)
-	 !dy(j,i)=dy(i,j)
-	 !dz(j,i)=dz(i,j)
 
 
 	 end if
@@ -69,7 +68,7 @@ do i=1,n
     FM(i)=(TF(i)**2 + TF(n+i)**2 + TF(2*n+i)**2)**0.5
 
 end do
-print *, FM
+print *, TF
 
 end program
     
